@@ -6,7 +6,7 @@
         content="RODIN">
   <meta name="keywords" content="RODIN">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RODIN: Injecting 2D Foundational Features tO 3D Vision Language Understanding</title>
+  <title>RODIN: Injecting 2D Foundational Features to 3D Vision Language Understanding</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -87,7 +87,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">RODIN: Injecting 2D Foundational Features tO 3D Vision Language Understanding</h1>
+          <h1 class="title is-1 publication-title">RODIN: Injecting 2D Foundational Features to 3D Vision Language Understanding</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://ayushjain1144.github.io/">Ayush Jain</a><sup>1,&dagger;</sup>,<sup></sup></span>
@@ -201,7 +201,8 @@
       </figure>
       <br>
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf">RODIN</span> is a model for 3D vision-language understanding that directly operates on posed RGB-D frames.
+        <span class="dnerf">RODIN</span> is a model for 3D vision-language understanding
+        <br> that directly operates on posed RGB-D frames.
       </h2>
     </div>
   </div>
@@ -214,17 +215,28 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-          State-of-the-art models on contemporary 3D perception benchmarks like ScanNet consume and label dataset provided 3D point clouds, obtained through post processing of sensed multiview RGB-D images. They are typically trained in-domain, forego large-scale 2D pre-training
-          and outperform alternatives that featurize the posed RGBD multiview images instead. The gap in performance between methods that consume posed images versus postprocessed 3D point clouds has fueled the belief that 2D and 3D perception require distinct model architectures.
-          In this paper, we challenge this view and propose ODIN (Omni-Dimensional INstance segmentation), a model that
-          can segment and label both 2D RGB images and 3D point clouds, using a transformer architecture that alternates between 2D within-view and 3D cross-view information fusion. Our model differentiates 2D and 3D feature operations through the positional encodings of the tokens involved, which capture pixel coordinates for 2D patch tokens and 3D coordinates for 3D feature tokens. ODIN achieves
-          state-of-the-art performance on ScanNet200, Matterport3D and AI2THOR 3D instance segmentation benchmarks, and
-          competitive performance on ScanNet, S3DIS and COCO. It
-          outperforms all previous works by a wide margin when the
-          sensed 3D point cloud is used in place of the point cloud
-          sampled from 3D mesh. When used as the 3D perception engine in an instructable embodied agent architecture, it sets
-          a new state-of-the-art on the TEACh action-from-dialogue
-          benchmark.
+          We present RODIN (Referential ODIN), a novel model for 3D vision-language 
+          understanding that directly operates on posed RGB-D frames. Consuming posed 
+          RGB-D from sensors, such as those from an iPhone, simplifies and speeds up 
+          inference compared to existing models that train and test using pointclouds 
+          \sampled from a reconstructed mesh provided by a dataset. We hypothesize 
+          that existing approaches consume pointclouds sampled from mesh instead of 
+          sensor RGB-D point clouds due to inaccurate camera poses in existing 3D 
+          grounding benchmarks, and show that using the ``sensor'' pointclouds indeed 
+          leads to a 5-10\% drop in performance on 3D referential grounding, for these methods.
+          Yet sensor noise is unavoidable in real-world settings. RODIN instead 
+          addresses this with a scalable, end-to-end architecture for various 3D 
+          vision-language tasks. Specifically, RODIN combines powerful pretrained 
+          2D weights trained on internet-scale data, adapts them to a 2D-3D encoder 
+          using the recently proposed ODIN, and combines that backbone with a proposed 3D mask-language decoder based on the Mask2Former used in SAM.
+          RODIN achieves state-of-the-art performance on multiple 3D vision-language 
+          benchmarks, including referential grounding (SR3D, NR3D, ScanRefer), 
+          \revision{language prompted} object detection (ScanNet200 and Matterport3D), 
+          and question-answering (ScanQA and SQA3D). It outperforms previous methods 
+          for 3D vision-language tasks, despite consuming only sensor inputs. Because 
+          of its combination of effectively leveraging 2D pretrained architectures and 
+          finetuning end-to-end on sensor data, \model{} provides a scalable solution for 
+          embodied 3D perception. Our code and weights are available at \url{https://rodin-seg.github.io}.
         </div>
       </div>
     </div>
@@ -592,7 +604,7 @@
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@misc{jain2024odin,
-      title={RODIN: Injecting 2D Foundational Features tO 3D Vision Language Understanding}, 
+      title={RODIN: Injecting 2D Foundational Features to 3D Vision Language Understanding}, 
       author={Ayush Jain and Pushkal Katara and Nikolaos Gkanatsios and Adam W. Harley and Gabriel Sarch and Kriti Aggarwal and Vishrav Chaudhary and Katerina Fragkiadaki},
       year={2024},
       eprint={2401.02416},
